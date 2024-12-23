@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container bg-white h-100 mt-3 p-5 rounded">
+    <img src="/static/{{ found_user['img'] }}" class="rounded shadow-lg" width="30%">
+    <h5> სახელი: {{ found_user['name'] }} {{ found_user['surname'] }}
+        {% if found_user['role'] == "Admin" %}
+        <span class="badge text-bg-danger">Admin</span>
+        {% elif found_user['role'] == "Moderator" %}
+        <span class="badge text-bg-success">Moderator</span>
+        {% else %}
+        <span class="badge text-bg-primary">User</span>
+        {% endif %}
+    </h5>
+
+    <p> ასაკი: {{ found_user['age'] }}</p>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container bg-white h-100 mt-3 p-5 rounded">
+    <div class="row">
+        {% for product in products %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/static/{{ product.img }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price }}</p>
+
+                    <a href="/edit_product/{{ product.id }}" class="btn btn-primary">Edit</a>
+                    {% if current_user.role == "Admin" %}
+                    <a href="/delete_product/{{ product.id }}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% for user in users %}
+    <p><a href="/profile/{{ user }}">{{ user }} პროფილი</a></p>
+    {% endfor %}
+</div>
+{% endblock %}
